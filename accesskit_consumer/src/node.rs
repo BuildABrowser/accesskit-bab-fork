@@ -446,6 +446,10 @@ impl<'a> NodeRef<'a> {
         self.data().braille_role_description().is_some()
     }
 
+    pub fn html_tag(&self) -> Option<&str> {
+        self.data().html_tag()
+    }
+
     pub fn aria_current(&self) -> Option<AriaCurrent> {
         self.data().aria_current()
     }

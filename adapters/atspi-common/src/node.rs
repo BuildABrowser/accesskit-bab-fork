@@ -407,6 +407,14 @@ impl NodeWrapper<'_> {
         self.0.braille_role_description()
     }
 
+    fn html_tag(&self) -> Option<&str> {
+        self.0.html_tag()
+    }
+
+    fn url(&self) -> Option<&str> {
+        self.0.url()
+    }
+
     pub(crate) fn attributes(&self) -> HashMap<&'static str, String> {
         let mut attributes = HashMap::new();
         if let Some(placeholder) = self.placeholder() {
@@ -426,6 +434,12 @@ impl NodeWrapper<'_> {
         }
         if let Some(role_description) = self.braille_role_description() {
             attributes.insert("brailleroledescription", role_description.to_string());
+        }
+        if let Some(html_tag) = self.html_tag() {
+            attributes.insert("tag", html_tag.to_string());
+        }
+        if let Some(url) = self.url() {
+            attributes.insert("href", url.to_string());
         }
 
         attributes
